@@ -16,10 +16,7 @@ public class MinMaxHeap {
         return (int) Math.floor(i);
 
     }
-     public void heapify(int[] heapArr, int i)   {
-         int l = left(i);
-         int r = right(i);
-         if(l <= length)
+
 
      }
 
