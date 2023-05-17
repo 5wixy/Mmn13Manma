@@ -3,10 +3,11 @@ import java.util.Arrays;
 public class MinMaxHeap {
 
     int[] heapArr;
-    //int length = heapArr.length;
+    int size;
 
     public MinMaxHeap(int[] heapArr){
         this.heapArr = heapArr;
+        this.size = heapArr.length;
 
     }
     public int left(int i) {
@@ -33,12 +34,10 @@ public class MinMaxHeap {
     }
 
     public boolean isGrandChild(int i, int d) {
-       // if (d == 4 * i || d == 4 * i + 1 || d == 4 * i + 2 || d == 4 * i + 3) {
-           // return true;
-      // }
-        //return false;
-        int parent = parent(i);
-        return parent != -1 && parent(d) == parent;
+
+        int parentL = left(i);
+        int parentR = right(i);
+        return parent(d) == parentL || parent(d) == parentR;
 
 
     }
@@ -127,7 +126,7 @@ public class MinMaxHeap {
                     heapArr[i] = heapArr[m];
                     heapArr[m] = temp;
                     if (isGrandChild(i, m)) {
-                        if (heapArr[m] > heapArr[parent(m)]) {
+                        if (heapArr[m] < heapArr[parent(m)]) {
                             int temp2 = heapArr[m];
                             heapArr[m] = heapArr[parent(m)];
                             heapArr[parent(m)] = temp2;
@@ -146,7 +145,7 @@ public class MinMaxHeap {
                     heapArr[i] = heapArr[m];
                     heapArr[m] = temp;
                     if (isGrandChild(i, m)) {
-                        if (heapArr[m] < heapArr[parent(m)]) {
+                        if (heapArr[m] > heapArr[parent(m)]) {
                             int temp2 = heapArr[m];
                             heapArr[m] = heapArr[parent(m)];
                             heapArr[parent(m)] = temp2;
@@ -176,7 +175,63 @@ public class MinMaxHeap {
 
 
     }
+    public int heapExtractMax(int[] heapArr){
+        if(size < 1){
+            System.out.println("ERROR: HEAP UNDERFLOW");
+        }
+        int max = heapArr[0];
+        heapArr[0] = heapArr[heapArr.length-1];
+        this.size--;
+        //TODO REMOVE LAST
+        heapify(heapArr,0);
+        return max;
 
+    }
+    public int heapExtractMin(int[] heapArr){
+        if(size < 1){
+            System.out.println("ERROR: HEAP UNDERFLOW");
+        }
+        int min = Integer.MAX_VALUE;
+        int minInd = Integer.MAX_VALUE;
+        if(right(0) < size){
+            if(heapArr[left(0)] < heapArr[right(0)]){
+                min = heapArr[left(0)];
+                minInd = 1;
+
+            }
+            else{
+                min = heapArr[right(0)];
+                minInd = 2;
+            }
+        }
+        if(size < 3){
+            min = heapArr[left(0)];
+            minInd = 1;
+
+        }
+        heapArr[minInd] = heapArr[heapArr.length-1];
+        //TODO remove last
+        heapify(heapArr,1);
+
+
+
+        return min;
+    }
+    public int[] heapInsert(int[] heapArr,int key){
+        int[] heapNew = new int[heapArr.length+1];
+        for(int i = 0;i < heapNew.length-1;i++){
+            heapNew[i] = heapArr[i];
+
+        }
+        heapNew[heapNew.length-1] = key;
+        this.size++;
+        heapify(heapNew,heapNew.length-1);
+        return heapNew;
+
+
+
+
+    }
 
     public  void main(String[] args) {
         int[] a = new int[]{3,50,20,8,45,19,50,100,17,90};

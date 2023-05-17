@@ -7,6 +7,9 @@ public class Main {
         MinMaxHeap minMaxHeap = new MinMaxHeap(a);
         minMaxHeap.buildHeap(a);
 
+
+
+        System.out.println(Arrays.toString(minMaxHeap.heapInsert(a,120)));
         System.out.println(Arrays.toString(a));
 
     }
