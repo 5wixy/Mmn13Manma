@@ -52,15 +52,16 @@ public class MinMaxHeap {
     int leftChild = 2 * i + 1;
     int rightChild = 2 * i + 2;
     int biggestChild = leftChild;
-
-    if (rightChild < this.heapArr.length && heapArr[rightChild] > heapArr[leftChild]) {
-        biggestChild = rightChild;
-    }
-
     int leftGrandchild = 2 * leftChild + 1;
     int rightGrandchild = 2 * leftChild + 2;
     int rightLeftGrandchild = 2 * leftChild + 3;
     int rightRightGrandchild = 2 * leftChild + 4;
+
+    if (rightChild < heapArr.length && heapArr[rightChild] > heapArr[biggestChild]) {
+        biggestChild = rightChild;
+    }
+
+
 
     if (rightGrandchild < heapArr.length && heapArr[rightGrandchild] > heapArr[biggestChild]) {
         biggestChild = rightGrandchild;
@@ -85,15 +86,16 @@ public class MinMaxHeap {
         int leftChild = 2 * i + 1;
         int rightChild = 2 * i + 2;
         int smallestChild = leftChild;
-
-        if (rightChild < h.length && h[rightChild] < h[leftChild]) {
-            smallestChild = rightChild;
-        }
-
         int leftGrandchild = 2 * leftChild + 1;
         int rightGrandchild = 2 * leftChild + 2;
         int rightLeftGrandchild = 2 * leftChild + 3;
         int rightRightGrandchild = 2 * leftChild + 4;
+
+        if (rightChild < h.length && h[rightChild] < h[smallestChild]) {
+            smallestChild = rightChild;
+        }
+
+
 
         if (rightGrandchild < h.length && h[rightGrandchild] < h[smallestChild]) {
             smallestChild = rightGrandchild;
@@ -117,7 +119,7 @@ public class MinMaxHeap {
 
 
    public void heapify(int[] heapArr, int m) {
-        while (2 * m < heapArr.length) {
+        while (2* m < heapArr.length) {
             int i = m;
             if (isEvenLvl(m)) {
                 m = findBiggest(heapArr,i);
@@ -218,26 +220,94 @@ public class MinMaxHeap {
         return min;
     }
     public int[] heapInsert(int[] heapArr,int key){
-        int[] heapNew = new int[heapArr.length+1];
-        for(int i = 0;i < heapNew.length-1;i++){
-            heapNew[i] = heapArr[i];
+
+        int[] tempHeap = new int[heapArr.length+1];
+        for (int i = 0; i < heapArr.length; i++) {
+            tempHeap[i] = heapArr[i];
+        }
+        tempHeap[heapArr.length] = key;
+        this.size++;
+        int index = tempHeap.length-1;
+        while(index >= 0){
+            heapify(tempHeap,index);
+            index = parent(index);
+           // System.out.println(Arrays.toString(tempHeap));
 
         }
-        heapNew[heapNew.length-1] = key;
-        this.size++;
-        heapify(heapNew,heapNew.length-1);
-        return heapNew;
-
-
+        this.heapArr = tempHeap;
+        return tempHeap;
 
 
     }
+    public int[] heapDelete(int[] heapArr, int i){
+        int[] tempHeap = new int[heapArr.length-1];
+        swap(heapArr,i,heapArr.length-1);
+        for (int j = 0; j < tempHeap.length; j++) {
+            tempHeap[j] = heapArr[j];
+        }
+        this.size--;
+        int index = tempHeap.length-1;
+        while(index > 0){
+            heapify(tempHeap,index);
+            index = parent(index);
+            // System.out.println(Arrays.toString(tempHeap));
 
-    public  void main(String[] args) {
-        int[] a = new int[]{3,50,20,8,45,19,50,100,17,90};
-        buildHeap(a);
-        Arrays.toString(a);
-
+        }
+        this.heapArr = tempHeap;
+        return tempHeap;
     }
+    private void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+    public void heapSort(int[] heapArr) {
+
+
+        int N = heapArr.length;
+
+        // Build heap (rearrange array)
+        for (int i = N / 2 - 1; i >= 0; i--)
+            maxHeapify(heapArr, i);
+
+        // One by one extract an element from heap
+        for (int i = N - 1; i > 0; i--) {
+            // Move current root to end
+            int temp = heapArr[0];
+            heapArr[0] = heapArr[i];
+            heapArr[i] = temp;
+
+            // call max heapify on the reduced heap
+            maxHeapify(heapArr, 0);
+
+
+        }
+    }
+       public void maxHeapify(int arr[], int i)
+        {
+            int largest = i; // Initialize largest as root
+            int l = 2 * i + 1; // left = 2*i + 1
+            int r = 2 * i + 2; // right = 2*i + 2
+
+            // If left child is larger than root
+            if (l < arr.length && arr[l] > arr[largest])
+                largest = l;
+
+            // If right child is larger than largest so far
+            if (r < arr.length && arr[r] > arr[largest])
+                largest = r;
+
+            // If largest is not root
+            if (largest != i) {
+                int swap = arr[i];
+                arr[i] = arr[largest];
+                arr[largest] = swap;
+
+                // Recursively heapify the affected sub-tree
+                heapify(arr, largest);
+            }
+        }
+
+
 
 }

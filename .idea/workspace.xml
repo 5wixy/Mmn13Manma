@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e06381a2-f0fc-4259-8dd1-ca15ced9c67a" name="Changes" comment="">
+    <list default="true" id="e06381a2-f0fc-4259-8dd1-ca15ced9c67a" name="Changes" comment="heapify works extract min max">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MinMaxHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MinMaxHeap.java" afterDir="false" />
@@ -50,8 +50,18 @@
       <workItem from="1683913078622" duration="869000" />
       <workItem from="1684001047592" duration="2556000" />
       <workItem from="1684006770222" duration="2128000" />
-      <workItem from="1684324407536" duration="18492000" />
+      <workItem from="1684324407536" duration="19885000" />
+      <workItem from="1684352469616" duration="2595000" />
+      <workItem from="1684400681714" duration="6739000" />
     </task>
+    <task id="LOCAL-00001" summary="heapify works extract min max">
+      <created>1684348376190</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1684348376190</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -67,5 +77,24 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="heapify works extract min max" />
+    <option name="LAST_COMMIT_MESSAGE" value="heapify works extract min max" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/MinMaxHeap.java</url>
+          <line>263</line>
+          <properties class="MinMaxHeap" method="heapSort">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
