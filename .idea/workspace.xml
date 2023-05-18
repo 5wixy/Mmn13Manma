@@ -53,6 +53,7 @@
       <workItem from="1684324407536" duration="19885000" />
       <workItem from="1684352469616" duration="2595000" />
       <workItem from="1684400681714" duration="6739000" />
+      <workItem from="1684410795016" duration="3238000" />
     </task>
     <task id="LOCAL-00001" summary="heapify works extract min max">
       <created>1684348376190</created>
@@ -81,20 +82,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="heapify works extract min max" />
     <option name="LAST_COMMIT_MESSAGE" value="heapify works extract min max" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/MinMaxHeap.java</url>
-          <line>263</line>
-          <properties class="MinMaxHeap" method="heapSort">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

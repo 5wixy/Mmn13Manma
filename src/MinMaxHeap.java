@@ -122,35 +122,41 @@ public class MinMaxHeap {
         while (2* m < heapArr.length) {
             int i = m;
             if (isEvenLvl(m)) {
-                m = findBiggest(heapArr,i);
-                if (heapArr[m] > heapArr[i]) {
-                    int temp = heapArr[i];
-                    heapArr[i] = heapArr[m];
-                    heapArr[m] = temp;
-                    if (isGrandChild(i, m)) {
-                        if (heapArr[m] < heapArr[parent(m)]) {
-                            int temp2 = heapArr[m];
-                            heapArr[m] = heapArr[parent(m)];
-                            heapArr[parent(m)] = temp2;
+                if (hasChildren(heapArr,m)) {
+                    m = findBiggest(heapArr, i);
+                    if (heapArr[m] > heapArr[i]) {
+                        int temp = heapArr[i];
+                        heapArr[i] = heapArr[m];
+                        heapArr[m] = temp;
+                        if (isGrandChild(i, m)) {
+                            if (heapArr[m] < heapArr[parent(m)]) {
+                                int temp2 = heapArr[m];
+                                heapArr[m] = heapArr[parent(m)];
+                                heapArr[parent(m)] = temp2;
+
+                            }
 
                         }
 
                     }
 
                 }
-
-
+                else break;
             } else {
-                m = findSmallest(heapArr,i);
-                if (heapArr[m] < heapArr[i]) {
-                    int temp = heapArr[i];
-                    heapArr[i] = heapArr[m];
-                    heapArr[m] = temp;
-                    if (isGrandChild(i, m)) {
-                        if (heapArr[m] > heapArr[parent(m)]) {
-                            int temp2 = heapArr[m];
-                            heapArr[m] = heapArr[parent(m)];
-                            heapArr[parent(m)] = temp2;
+                if (hasChildren(heapArr,m)) {
+                    m = findSmallest(heapArr, i);
+                    if (heapArr[m] < heapArr[i]) {
+                        int temp = heapArr[i];
+                        heapArr[i] = heapArr[m];
+                        heapArr[m] = temp;
+                        if (isGrandChild(i, m)) {
+                            if (heapArr[m] > heapArr[parent(m)]) {
+                                int temp2 = heapArr[m];
+                                heapArr[m] = heapArr[parent(m)];
+                                heapArr[parent(m)] = temp2;
+
+
+                            }
 
 
                         }
@@ -158,10 +164,8 @@ public class MinMaxHeap {
 
                     }
 
-
                 }
-
-
+                else break;
             }
         }
     }
@@ -250,8 +254,6 @@ public class MinMaxHeap {
         while(index > 0){
             heapify(tempHeap,index);
             index = parent(index);
-            // System.out.println(Arrays.toString(tempHeap));
-
         }
         this.heapArr = tempHeap;
         return tempHeap;
@@ -262,27 +264,13 @@ public class MinMaxHeap {
         arr[j] = temp;
     }
     public void heapSort(int[] heapArr) {
+        int[] sorted = new int[heapArr.length];
+        for (int i = 0; i < sorted.length ; i++)
+            sorted[i]= heapExtractMin(heapArr);
 
-
-        int N = heapArr.length;
-
-        // Build heap (rearrange array)
-        for (int i = N / 2 - 1; i >= 0; i--)
-            maxHeapify(heapArr, i);
-
-        // One by one extract an element from heap
-        for (int i = N - 1; i > 0; i--) {
-            // Move current root to end
-            int temp = heapArr[0];
-            heapArr[0] = heapArr[i];
-            heapArr[i] = temp;
-
-            // call max heapify on the reduced heap
-            maxHeapify(heapArr, 0);
-
-
+       // System.out.println(Arrays.toString(sorted));
         }
-    }
+
        public void maxHeapify(int arr[], int i)
         {
             int largest = i; // Initialize largest as root
