@@ -53,6 +53,7 @@ public class Main {
             double[] array = new double[numbers.length];
             for (int i = 0; i < numbers.length; i++) {
 
+
                 array[i] = Double.parseDouble(numbers[i]);
             }
             return array;
@@ -62,6 +63,15 @@ public class Main {
         } catch(IOException e){
             e.printStackTrace();
         }
+
+                array[i] = Double.parseDouble(numbers[i]);
+            }
+            return array;
+        }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+
         return null;
 
 
@@ -80,6 +90,7 @@ public class Main {
             menu(mmh, array);
         }
     }
+
 
     public static void menu(MinMaxHeap mmh, double[] array) {
         String[] options = {"1- Print Heap",
@@ -135,6 +146,46 @@ public class Main {
                 }
             }
 
+
+
+    public static void menu(MinMaxHeap mmh, double[] array) {
+        String[] options = {"1- Print Heap",
+                "2- Extract Max",
+                "3- Extract Min",
+                "4- Insert Number",
+                "5- Delete Number",
+                "6- Heap Sort",
+                "7- Exit"
+        };
+
+        Scanner menuScanner = new Scanner(System.in);
+        int option = 0;
+        while (option != 7) {
+            printMenu(options);
+            option = menuScanner.nextInt();
+            switch (option) {
+                case 1:
+                    System.out.println(Arrays.toString(array));
+                    break;
+                case 2:
+                    array = mmh.heapExtractMax(array);
+                    break;
+                case 3:
+                    array = mmh.heapExtractMin(array);
+                    break;
+                case 4:
+                    array = insert(mmh, array);
+                    break;
+                case 5:
+                    array = delete(mmh, array);
+                    break;
+                case 6:
+                    heapSort();
+                    break;
+                case 7:
+                    System.exit(0);
+            }
+
         }
     }
 
@@ -142,6 +193,7 @@ public class Main {
         System.out.println("Please enter a number to insert: ");
         Scanner sc = new Scanner(System.in);
         double num = sc.nextDouble();
+
         return mmh.heapInsert(array,num);
 
     }
@@ -161,10 +213,14 @@ public class Main {
 
 
 
+       return mmh.heapInsert(array,num);
+
+
 
 
 
     }
+
     public static double[] heapSort(MinMaxHeap mmh, double[] array){
 
         String[] options = {"1- Ascending Order",
@@ -177,6 +233,17 @@ public class Main {
             option = sc.nextInt();
 
         switch (option) {
+
+    public static double[] delete(MinMaxHeap mmh, double[] array){
+        System.out.println("Please enter an Integer index between 0" +" and "+ (array.length-1) + "to delete: ");
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        if(num > array.length-1) {
+            delete(mmh,array);
+
+        }
+
+        return mmh.heapDelete(array,num);
 
             case 1: {
                 array = mmh.heapSort(array);
