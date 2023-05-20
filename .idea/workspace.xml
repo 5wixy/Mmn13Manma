@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e06381a2-f0fc-4259-8dd1-ca15ced9c67a" name="Changes" comment="heapify works extract min max">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MinMaxHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MinMaxHeap.java" afterDir="false" />
@@ -19,6 +20,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="b3df0380da50548d5c6f89a07aa385a1b12ca44b" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -54,6 +60,9 @@
       <workItem from="1684352469616" duration="2595000" />
       <workItem from="1684400681714" duration="6739000" />
       <workItem from="1684410795016" duration="3238000" />
+      <workItem from="1684529518516" duration="4608000" />
+      <workItem from="1684582547864" duration="9947000" />
+      <workItem from="1684605953237" duration="5211000" />
     </task>
     <task id="LOCAL-00001" summary="heapify works extract min max">
       <created>1684348376190</created>
@@ -73,7 +82,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
